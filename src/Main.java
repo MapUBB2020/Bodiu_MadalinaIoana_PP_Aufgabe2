@@ -13,9 +13,10 @@ public class Main {
                 break;
             }
         }
-        if(!isAlready)
+        if(isAlready==false) {
 
-            shows.add(new Tvshow(name, genre,episodes));
+            shows.add(new Tvshow(name, genre, episodes));
+        }
 
     }
     public static  void updateTvshow(String name, String genre){
@@ -49,7 +50,7 @@ public class Main {
     }
     public static void getAllTvshows(){
         for(int c=0; c<shows.size();c++) {
-            System.out.println(shows.get(c).getEpisodes().get(c));
+            System.out.println(shows.get(c));
         }
 
     }
@@ -119,7 +120,7 @@ public class Main {
 
                     for(int s=0;s<shows.size();s++)
                     {
-                        if(shows.get(s).equals(show))
+                        if(shows.get(s).getName().equals(show))
                             shows.get(s).addEpisode(new Episode(name,description,durationINt));
                     }
                     break;
@@ -158,7 +159,7 @@ public class Main {
                     show=in.nextLine();
                     for(int s=0;s<shows.size();s++)
                 {
-                    if(shows.get(s).equals(show))
+                    if(shows.get(s).getName().equals(show))
                         shows.get(s).getAllEpisodes();
                 }
                 break;
