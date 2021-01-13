@@ -83,8 +83,25 @@ public class Main {
                 case "1":
                     System.out.println("Enter name");
                     String name=in.nextLine();
+
+                    while(!name.matches("^[a-zA-Z0_]*$"))
+                    {
+                        System.out.println("Not a valid name! Try again");
+                        name = in.nextLine();
+                    }
+
+
+
                     System.out.println("Enter genre");
                     String genre=in.nextLine();
+
+                    while(!genre.matches("^[a-zA-Z0_]*$"))
+                    {
+                        System.out.println("Not a valid genre! Try again");
+                        genre = in.nextLine();
+                    }
+
+
 
 
                     addTvshow(name,genre,new ArrayList<Episode>());
@@ -92,8 +109,18 @@ public class Main {
                 case "2":
                     System.out.println("Enter name");
                      name=in.nextLine();
+                    while(!name.matches("^[a-zA-Z0_]*$"))
+                    {
+                        System.out.println("Not a valid name! Try again");
+                        name = in.nextLine();
+                    }
                     System.out.println("Enter genre");
                      genre=in.nextLine();
+                    while(!genre.matches("^[a-zA-Z0_]*$"))
+                    {
+                        System.out.println("Not a valid genre! Try again");
+                        genre = in.nextLine();
+                    }
 
 
                     updateTvshow(name,genre);
@@ -102,6 +129,11 @@ public class Main {
                 case "3":
                     System.out.println("Enter name");
                     name=in.nextLine();
+                    while(!name.matches("^[a-zA-Z0_]*$"))
+                    {
+                        System.out.println("Not a valid name! Try again");
+                        name = in.nextLine();
+                    }
                     deleteTvshow(name);
                     break;
                 case "4":
@@ -110,11 +142,29 @@ public class Main {
                 case "5":
                     System.out.println("Enter name");
                     name=in.nextLine();
+                    while(!name.matches("^[a-zA-Z0_]*$"))
+                    {
+                        System.out.println("Not a valid name! Try again");
+                        name = in.nextLine();
+                    }
                     System.out.println("Enter description");
                     String description=in.nextLine();
+                    while(!description.matches("^[a-zA-Z0_]*$"))
+                    {
+                        System.out.println("Not a valid description! Try again");
+                        description = in.nextLine();
+                    }
+
                     System.out.println("Enter duration");
                     String duration=in.nextLine();
                     int durationINt=Integer.parseInt(duration);
+
+                    while(!duration.matches("^[0-9]*$"))
+                    {
+                        System.out.println("Not a validduration! Try again");
+                        duration = in.nextLine();
+                    }
+
                     System.out.println("Which show?");
                     String show=in.nextLine();
 
