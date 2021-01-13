@@ -1,7 +1,21 @@
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class Main {
     static ArrayList<Tvshow> shows= new ArrayList<>();
+    private static Map<String, Integer> sortByValue(Map<String, Integer> unsortMap, final boolean order)
+    {
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(unsortMap.entrySet());
+
+        // Sorting the list based on values
+        list.sort((o1, o2) -> order ? o1.getValue().compareTo(o2.getValue()) == 0
+                ? o1.getKey().compareTo(o2.getKey())
+                : o1.getValue().compareTo(o2.getValue()) : o2.getValue().compareTo(o1.getValue()) == 0
+                ? o2.getKey().compareTo(o1.getKey())
+                : o2.getValue().compareTo(o1.getValue()));
+        return list.stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> b, LinkedHashMap::new));
+
+    }
 
     public static void addTvshow(String name, String genre, ArrayList<Episode> episodes){
         boolean isAlready=false;
@@ -53,6 +67,23 @@ public class Main {
             System.out.println(shows.get(c));
         }
 
+    }
+
+    public static Map<String, Integer> sortByDuration(String genre){
+        Map<String,Integer> genreDuration=new HashMap<String, Integer>(); ;
+        for(int c=0; c<shows.size();c++) {
+           if(shows.get(c).getGenre().equals((genre)))
+           {
+               genreDuration.put(shows.get(c).getGenre(),shows.get(c).durationCalculation());
+           }
+        }
+        return sortByValue(genreDuration,true);
+
+    }
+
+    private static void printMap(Map<String, Integer> map)
+    {
+        map.forEach((key, value) -> System.out.println("Key : " + key + " Value : " + value));
     }
 
 
@@ -213,6 +244,13 @@ public class Main {
                         shows.get(s).getAllEpisodes();
                 }
                 break;
+
+                case "9":
+                    System.out.println("Enter genre");
+                    genre=in.nextLine();
+
+                    printMap(sortByDuration(genre));
+                    break;
 
 
                 default:

@@ -73,5 +73,15 @@ public class Tvshow {
             System.out.println(this.getEpisodes().get(c));
         }
 
+
+    }
+
+    public int durationCalculation()
+    {
+        int d=0;
+        for(int c=0; c<this.getEpisodes().size();c++) {
+            d=d+this.getEpisodes().get(c).getDuration();
+        }
+        return d;
     }
 }
