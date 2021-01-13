@@ -46,7 +46,32 @@ public class Tvshow {
         this.getEpisodes().add(ep);
     }
 
-    public void deleteEpisode(Episode ep){
-        this.getEpisodes().remove(ep);
+    public void deleteEpisode(String name){
+        for(int c=0; c<this.getEpisodes().size();c++)
+        {
+            if(this.getEpisodes().get(c).getTitle().equals(name))
+            {
+                this.getEpisodes().remove(c);
+            }
+
+        }
+
+    }
+    public void updateEpisode(Episode ep){
+        for(int c=0; c<this.getEpisodes().size();c++)
+        {
+            if(ep.getTitle().equals(this.getEpisodes().get(c).getTitle()))
+            {
+                this.getEpisodes().get(c).setDuration(ep.getDuration());
+                this.getEpisodes().get(c).setDescription(ep.description);
+            }
+        }
+    }
+
+    public void getAllEpisodes(){
+        for(int c=0; c<this.getEpisodes().size();c++) {
+            System.out.println(this.getEpisodes().get(c));
+        }
+
     }
 }
